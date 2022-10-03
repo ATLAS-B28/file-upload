@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSpace - File Upload</title>
+</head>
+<body>
+    <h1 style="display: grid;
+              gap: .5rem; 
+              grid-template-columns: auto 1fr; 
+              max-width: 500px; 
+              margin: 10px auto;"> Welcome to WorkSpace -File Upload Service </h1>
+    <% if(locals.fileLink != null){ %><!--This means we will redirect the user and show the generated link-->
+        <div style="margin-bottom: 1rem;">
+            Your file is uploaded!!
+            <a href="<%= locals.fileLink  %> "><%= locals.fileLink  %> </a>
+        </div>
+    <% } %>  
+   
+   <!--here we create a html form-->
+   <form action="/upload" 
+   method="POST" 
+   enctype="multipart/form-data"
+   style="display : grid; 
+                gap: .5rem; 
+                grid-template-columns: auto 1fr; 
+                max-width: 500px; 
+                margin: 10px auto;">
+    <label for="file">File:</label><!--file id links to for in label for 
+    accessibility reseaons-->
+    <input type="file" id="file" name="file" required><!--this name is accessed while dealing with database-->
+    <label for="password">Password:</label>
+    <input type="password" id="pass" name="password" >
+    <button style="grid-column: span 2;" type="submit">Upload and Share</button>
+   </form>
+</body>
+</html>
